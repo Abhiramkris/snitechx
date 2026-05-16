@@ -28,10 +28,10 @@ export const apartData = [
     {
         id: 4,
         title: "We know your stage",
-        description: "AI is embedded in our software development lifecycle. It helps us build better quality products faster, and it's how we've consistently become our clients' highest-performing product teams on projects",
-        statNumber: "3%",
-        statLabel: "Faster development pace",
-        highlightText: "Get results from week one, not after months of ramp-up"
+        description: "Whether you are a Series B scale-up expanding your core product line or a Fortune 500 enterprise undergoing digital transformation, we adapt our engineering velocity and governance models to fit your precise operational maturity.",
+        statNumber: "100%",
+        statLabel: "Stage-aligned execution",
+        highlightText: "Custom architectural roadmaps tailored to your immediate runway and growth milestones"
     }
 ];
 
