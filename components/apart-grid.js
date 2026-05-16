@@ -1,0 +1,55 @@
+export const apartData = [
+    {
+        id: 1,
+        title: "Elite engineering talent",
+        description: "We hire only the top 0.4% from Asia's strongest engineering pools. These aren't your average developers. They're proven scale-up product builders who have done this exact thing before, many times",
+        statNumber: "0.4%",
+        statLabel: "Applicant only survive",
+        highlightText: "Get results from week one, not after months of ramp-up"
+    },
+    {
+        id: 2,
+        title: "AI-native, and it compounds",
+        description: "AI is embedded in our software development lifecycle. It helps us build better quality products faster, and it's how we've consistently become our clients' highest-performing product teams on projects",
+        statNumber: "3%",
+        statLabel: "Faster development pace",
+        highlightText: "Get results from week one, not after months of ramp-up"
+    },
+    {
+        id: 3,
+        title: "Built for the long term",
+        description: "We work with clients for years, not projects. Ownership, continuity, and commitment are core to the Snitechx way. And when the time comes to build your own team, we don't just step aside, we help you make that transition.",
+        statNumber: "18 months",
+        statLabel: "average partnership duration, and counting",
+        highlightText: "Hiring the best people and setting them up for success"
+    },
+    {
+        id: 4,
+        title: "We know your stage",
+        description: "AI is embedded in our software development lifecycle. It helps us build better quality products faster, and it's how we've consistently become our clients' highest-performing product teams on projects",
+        statNumber: "3%",
+        statLabel: "Faster development pace",
+        highlightText: "Get results from week one, not after months of ramp-up"
+    }
+];
+
+export function initApartGrid() {
+    const container = document.getElementById('apart-grid-container');
+    if (!container) return;
+
+    container.innerHTML = apartData.map(item => `
+        <div class="apart-card">
+            <div class="apart-card-top">
+                <h3>${item.title}<span class="blue-dot">.</span></h3>
+                <p>${item.description}</p>
+            </div>
+            <div class="apart-card-bottom">
+                <div class="apart-stat-row">
+                    <span class="apart-stat-num">${item.statNumber}</span>
+                    <span class="apart-stat-label">${item.statLabel}</span>
+                </div>
+                <div class="apart-highlight-text">${item.highlightText}</div>
+            </div>
+        </div>
+    `).join('');
+}

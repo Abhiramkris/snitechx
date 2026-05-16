@@ -30,5 +30,322 @@
             </div>
         </div>
     </main>
+
+    <!-- 75px gap before next section as per Figma -->
+    <div class="section-spacer"></div>
+
+    <!-- WHO ARE WE SECTION -->
+    <section class="about-section">
+        <div class="about-wrapper">
+            <!-- Left Column: 60% -->
+            <div class="about-content">
+                <h2>Who are <span class="highlight-blue">we</span> ?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <!-- Right Column: 40% -->
+            <div class="about-stats" id="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="10" data-suffix="+">0+</span>
+                    </div>
+                    <span class="stat-label">Clients</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="100" data-suffix="+">0+</span>
+                    </div>
+                    <span class="stat-label">Clients</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="10" data-suffix="k">0k</span>
+                    </div>
+                    <span class="stat-label">Clients</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number-wrapper">
+                        <span class="stat-number" data-target="74" data-suffix="%">0%</span>
+                    </div>
+                    <span class="stat-label">Clients</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 75px gap before next section as per Figma -->
+    <div class="section-spacer"></div>
+
+    <!-- SERVICES SECTION -->
+    <section class="services-section">
+        <div class="services-container">
+            <!-- Section Title -->
+            <div class="services-header">
+                <h2>What are <span class="highlight-blue">Services</span> at Snitechx?</h2>
+            </div>
+
+            <div class="services-body">
+                <!-- Left Blue Box (Fixed/Z-index 5) -->
+                <div class="services-blue-card">
+                    <div class="services-blue-top">
+                        <img src="./assets/snitechxLogoWhite.svg" alt="Snitechx" class="services-logo" />
+                    </div>
+                    <div class="services-blue-content">
+                        <h3>High-compliance industries where getting it wrong isn't an option</h3>
+                        <div class="services-pills">
+                            <span class="service-pill">Cloud Solutions</span>
+                            <span class="service-pill">Networking</span>
+                            <span class="service-pill">Cyber Security</span>
+                            <span class="service-pill">Software Development</span>
+                            <span class="service-pill">Data centre solutions</span>
+                        </div>
+                    </div>
+                    <div class="services-blue-bottom">
+                        <div class="service-arrows">
+                            <button class="service-arrow" id="service-arrow-left" aria-label="Previous">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                            </button>
+                            <button class="service-arrow" id="service-arrow-right" aria-label="Next">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Scrollable Track (Z-index 1) -->
+                <div class="services-track-wrapper">
+                    <div class="services-track" id="services-track">
+                        <!-- Cards injected by JS -->
+                    </div>
+                    <!-- Permanent visual cue for mobile users -->
+                    <div class="mobile-swipe-cue">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        <span>Swipe to explore services</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 75px gap before next section as per Figma -->
+    <div class="section-spacer"></div>
+
+    <!-- PROCESS SECTION -->
+    <section class="process-section">
+        <div class="process-container">
+            <!-- Section Title -->
+            <div class="process-header">
+                <h2>What is <span class="highlight-blue">Process</span> at Snitechx?</h2>
+            </div>
+
+            <div class="process-body">
+                <!-- Left Column: Illustration / Placeholder Box -->
+                <div class="process-image-box">
+                    <!-- Solid grey box matching Figma design -->
+                </div>
+
+                <!-- Right Column: Process Steps List -->
+                <div class="process-steps-list">
+                    <!-- Step 1 -->
+                    <div class="process-step">
+                        <div class="step-badge">1.</div>
+                        <div class="step-content">
+                            <h3>Discovery & Analysis</h3>
+                            <p>We analyze your current infrastructure and business goals to identify gaps and opportunities for optimization</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step">
+                        <div class="step-badge">2.</div>
+                        <div class="step-content">
+                            <h3>Architecture Design</h3>
+                            <p>Our engineers draft a custom blueprint integrating Cloud, Security, and Networking tailored to your scale</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step">
+                        <div class="step-badge">3.</div>
+                        <div class="step-content">
+                            <h3>Agile Implementation</h3>
+                            <p>We execute the rollout using a phased approach, ensuring zero disruption to your existing operations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-step">
+                        <div class="step-badge">4.</div>
+                        <div class="step-content">
+                            <h3>Optimisation & Support</h3>
+                            <p>Continuous monitoring and proactive maintenance to ensure your systems remain secure and high-performing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 75px gap before next section as per Figma -->
+    <div class="section-spacer"></div>
+
+    <!-- WHAT SETS US APART SECTION -->
+    <section class="apart-section">
+        <div class="apart-container">
+            <!-- Section Title -->
+            <div class="apart-header">
+                <h2>What sets Snitechx <span class="highlight-blue">Apart</span>?</h2>
+            </div>
+
+            <!-- Dynamic 2x2 Grid Container -->
+            <div class="apart-grid" id="apart-grid-container">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 75px gap before next section as per Figma -->
+    <div class="section-spacer"></div>
+
+    <!-- INDUSTRIES SECTION -->
+    <section class="industry-section">
+        <div class="industry-container">
+            <!-- Section Title -->
+            <div class="industry-header">
+                <h2><span class="highlight-blue">Industries</span> that Snitechx works with</h2>
+            </div>
+
+            <!-- Dynamic Grid Container -->
+            <div class="industry-grid" id="industry-grid-container">
+                <!-- Cards injected by JS -->
+            </div>
+
+            <!-- Bottom CTA Button matching Figma Rectangle 85 -->
+            <div class="industry-cta-container">
+                <button class="industry-cta-button">Connect Back</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 75px gap before next section as per Figma -->
+    <div class="section-spacer"></div>
+
+    <!-- BLOG SECTION -->
+    <section class="blog-section" id="blog">
+        <div class="blog-container">
+            <!-- Section Title -->
+            <div class="blog-header">
+                <h2>Latest <span class="highlight-blue">Insights</span> & Blogs</h2>
+            </div>
+
+            <!-- Dynamic Grid Container -->
+            <div class="blog-grid" id="blog-grid-container">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER & FOOTER SECTION -->
+    <div class="footer-overlap-wrapper">
+        <!-- Overlapping Blue CTA Banner -->
+        <div class="cta-banner-container">
+            <div class="cta-banner-box">
+                <div class="cta-banner-content">
+                    <h2>Ready to transform your digital infrastructure?</h2>
+                    <p>Get our comprehensive service catalog and enterprise case studies.</p>
+                </div>
+                <div class="cta-banner-action">
+                    <button class="brochure-button" onclick="alert('Downloading Brochure...')">Download Brochure</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark Navy Footer -->
+        <footer class="snitechx-footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Column 1: Brand -->
+                    <div class="footer-col brand-col">
+                        <img src="./assets/snitechxLogoWhite.svg" alt="Snitechx Logo" class="footer-logo" />
+                        <p class="footer-desc">Empowering high-compliance industries with elite engineering, AI-native workflows, and bulletproof infrastructure.</p>
+                    </div>
+
+                    <!-- Column 2: Navigation -->
+                    <div class="footer-col links-col">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#industries">Industries</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="#connect">Connect Back</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Legal & Contact -->
+                    <div class="footer-col legal-col">
+                        <h3>Legal & Contact</h3>
+                        <ul>
+                            <li><a href="#privacy">Privacy Policy</a></li>
+                            <li><a href="#terms">Terms of Service</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                        </ul>
+                        <div class="footer-contact-info">
+                            <p class="phone-number">+91 (22) 6665 3366</p>
+                            <p class="email-address">info@snitechx.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Location & Map -->
+                    <div class="footer-col location-col">
+                        <h3>Our Location</h3>
+                        <p class="location-address">The Taj Mahal Palace, Apollo Bunder, Colaba, Mumbai, MH 400001</p>
+                        <div class="map-iframe-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.217273873427!2d72.83071377598585!3d18.92172898225186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1c73a0d5bcd%3A0xc3393006b5278cc1!2sThe%20Taj%20Mahal%20Palace%2C%20Mumbai!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="160" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom Row -->
+                <div class="footer-bottom-row">
+                    <p class="copyright">© 2026 Snitechx. All rights reserved.</p>
+                    <div class="footer-socials">
+                        <a href="#linkedin">LinkedIn</a>
+                        <a href="#twitter">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Load Stats Counter Animation -->
+    <script type="module">
+        import { initStatsCounter } from './components/stats-counter.js';
+        document.addEventListener('DOMContentLoaded', initStatsCounter);
+    </script>
+
+    <!-- Load Services Slider & Peek Animation -->
+    <script type="module">
+        import { initServicesSlider } from './components/services-slider.js';
+        document.addEventListener('DOMContentLoaded', initServicesSlider);
+    </script>
+
+    <!-- Load What Sets Us Apart Grid -->
+    <script type="module">
+        import { initApartGrid } from './components/apart-grid.js';
+        document.addEventListener('DOMContentLoaded', initApartGrid);
+    </script>
+
+    <!-- Load Industry Grid -->
+    <script type="module">
+        import { initIndustryGrid } from './components/industry-grid.js';
+        document.addEventListener('DOMContentLoaded', initIndustryGrid);
+    </script>
+
+    <!-- Load Blog Grid -->
+    <script type="module">
+        import { initBlogGrid } from './components/blog-grid.js';
+        document.addEventListener('DOMContentLoaded', initBlogGrid);
+    </script>
 </body>
 </html>
