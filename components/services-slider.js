@@ -19,14 +19,20 @@ export const servicesData = [
     },
     {
         id: 4,
-        title: "Software Development",
+        title: "It solutions",
         image: "./assets/service/service4.svg",
         description: "Our sales representative will contact you via email within 1 business day to learn more about your goals."
     },
     {
         id: 5,
-        title: "Data centre solutions",
+        title: "Softwares & development",
         image: "./assets/service/service5.svg",
+        description: "Our sales representative will contact you via email within 1 business day to learn more about your goals."
+    },
+    {
+        id: 6,
+        title: "Data centre solutions",
+        image: "./assets/service/service6.svg",
         description: "Our sales representative will contact you via email within 1 business day to learn more about your goals."
     }
 ];

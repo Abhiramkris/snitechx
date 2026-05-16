@@ -1,3 +1,5 @@
+import { animate, stagger } from "https://esm.sh/motion";
+
 export const blogData = [
     {
         id: 1,
@@ -30,7 +32,7 @@ export function initBlogGrid() {
     if (!container) return;
 
     container.innerHTML = blogData.map(item => `
-        <article class="blog-card" onclick="window.location.href='${item.link}'">
+        <article class="blog-card" onclick="window.location.href='${item.link}'" style="opacity: 0; transform: translateY(60px) scale(0.95);">
             <div class="blog-image-wrapper">
                 <img src="${item.image}" alt="${item.title}" class="blog-image" />
             </div>
@@ -50,4 +52,29 @@ export function initBlogGrid() {
             </div>
         </article>
     `).join('');
+
+    const cards = container.querySelectorAll('.blog-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animate(
+                    cards, 
+                    { 
+                        opacity: [0, 1], 
+                        transform: ["translateY(60px) scale(0.95)", "translateY(0px) scale(1)"] 
+                    }, 
+                    { 
+                        delay: stagger(0.15), 
+                        duration: 0.8, 
+                        easing: [0.22, 1, 0.36, 1] 
+                    }
+                );
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(container);
 }

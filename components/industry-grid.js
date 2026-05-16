@@ -1,3 +1,5 @@
+import { animate, stagger } from "https://esm.sh/motion";
+
 export const industryData = [
     {
         id: 1,
@@ -48,7 +50,7 @@ export function initIndustryGrid() {
     if (!container) return;
 
     container.innerHTML = industryData.map(item => `
-        <div class="industry-card-wrapper">
+        <div class="industry-card-wrapper" style="opacity: 0; transform: translateY(60px) scale(0.95); filter: drop-shadow(0 0 0px rgba(1, 148, 215, 0));">
             <div class="industry-card">
                 <div class="industry-image-wrapper">
                     <div class="industry-image-scaler" style="transform: scale(${item.scale || 1}); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
@@ -63,4 +65,34 @@ export function initIndustryGrid() {
             </div>
         </div>
     `).join('');
+
+    const wrappers = container.querySelectorAll('.industry-card-wrapper');
+    if (!wrappers.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animate(
+                    wrappers, 
+                    { 
+                        opacity: [0, 1], 
+                        transform: ["translateY(60px) scale(0.95)", "translateY(0px) scale(1)"],
+                        filter: [
+                            "drop-shadow(0 0 0px rgba(1, 148, 215, 0))", 
+                            "drop-shadow(0 0 35px rgba(1, 148, 215, 0.85))", 
+                            "drop-shadow(0 4px 20px rgba(0, 0, 0, 0.05))"
+                        ]
+                    }, 
+                    { 
+                        delay: stagger(0.12), 
+                        duration: 1.2, 
+                        easing: [0.22, 1, 0.36, 1] 
+                    }
+                );
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(container);
 }

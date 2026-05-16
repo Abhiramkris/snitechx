@@ -1,3 +1,5 @@
+import { animate, stagger } from "https://esm.sh/motion";
+
 export const apartData = [
     {
         id: 1,
@@ -38,7 +40,7 @@ export function initApartGrid() {
     if (!container) return;
 
     container.innerHTML = apartData.map(item => `
-        <div class="apart-card">
+        <div class="apart-card" style="opacity: 0; transform: translateY(60px) scale(0.95);">
             <div class="apart-card-top">
                 <h3>${item.title}<span class="blue-dot">.</span></h3>
                 <p>${item.description}</p>
@@ -52,4 +54,29 @@ export function initApartGrid() {
             </div>
         </div>
     `).join('');
+
+    const cards = container.querySelectorAll('.apart-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animate(
+                    cards, 
+                    { 
+                        opacity: [0, 1], 
+                        transform: ["translateY(60px) scale(0.95)", "translateY(0px) scale(1)"] 
+                    }, 
+                    { 
+                        delay: stagger(0.15), 
+                        duration: 0.8, 
+                        easing: [0.22, 1, 0.36, 1] 
+                    }
+                );
+                observer.disconnect();
+            }
+        });
+    }, { threshold: 0.15 });
+
+    observer.observe(container);
 }

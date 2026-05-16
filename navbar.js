@@ -1,4 +1,4 @@
-import { animate, stagger } from "https://cdn.jsdelivr.net/npm/motion@11.11.11/+esm";
+import { animate, stagger } from "https://esm.sh/motion";
 
 class NavbarComponent extends HTMLElement {
     constructor() {
