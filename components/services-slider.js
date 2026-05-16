@@ -1,3 +1,5 @@
+import { animate, stagger } from "https://esm.sh/motion";
+
 export const servicesData = [
     {
         id: 1,
@@ -41,9 +43,9 @@ export function initServicesSlider() {
     const track = document.getElementById('services-track');
     if (!track) return;
 
-    // Render cards from JSON
+    // Render cards from JSON with initial hidden swipe state
     track.innerHTML = servicesData.map(service => `
-        <div class="service-card">
+        <div class="service-card" style="opacity: 0; transform: translateX(100px);">
             <div class="service-image-wrapper">
                 <img src="${service.image}" alt="${service.title}" class="service-image" />
             </div>
@@ -70,7 +72,10 @@ export function initServicesSlider() {
         });
     }
 
-    // Scroll peek animation on enter viewport
+    const cards = track.querySelectorAll('.service-card');
+    if (!cards.length) return;
+
+    // Scroll peek & swipe animation on enter viewport
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -80,13 +85,28 @@ export function initServicesSlider() {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // True physical scroll peek animation
+                // 1. Motion One staggered swipe-in entrance with 0.3s (300ms) delay
+                animate(
+                    cards,
+                    {
+                        opacity: [0, 1],
+                        transform: ["translateX(100px)", "translateX(0px)"]
+                    },
+                    {
+                        delay: stagger(0.15, { startDelay: 0.3 }),
+                        duration: 0.8,
+                        easing: [0.22, 1, 0.36, 1]
+                    }
+                );
+
+                // 2. Physical scroll peek animation triggers right after cards finish swiping in
                 setTimeout(() => {
-                    track.scrollBy({ left: 80, behavior: 'smooth' });
+                    track.scrollBy({ left: 120, behavior: 'smooth' });
                     setTimeout(() => {
-                        track.scrollBy({ left: -80, behavior: 'smooth' });
+                        track.scrollBy({ left: -120, behavior: 'smooth' });
                     }, 800);
-                }, 500); // Wait 500ms after entering view so user is looking at it
+                }, 1200);
+
                 observer.unobserve(entry.target);
             }
         });
