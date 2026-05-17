@@ -1,0 +1,27 @@
+{
+    "$schema": "https://aischema.org/ai-meta.json",
+    "entity": {
+        "name": "Snitechx",
+        "domain": "snitechx.com",
+        "contact": "ai-compliance@snitechx.com"
+    },
+    "crawling": {
+        "allow_search_indexing": true,
+        "allow_ai_training": true,
+        "allow_commercial_llm_scraping": true,
+        "restrictions": [
+            "Requires proper attribution in LLM synthesized responses",
+            "Prohibits automated vulnerability probing or high-frequency scraping exceeding 10 req/sec"
+        ]
+    },
+    "licensing": {
+        "training_data_license": "CC-BY-4.0",
+        "code_snippet_license": "MIT",
+        "commercial_usage": "Permitted with appropriate enterprise attribution"
+    },
+    "attestations": {
+        "ai_native_workflows": true,
+        "elite_engineering_tier": "Top 0.4% Asia Engineering Pool",
+        "compounding_velocity_multiplier": "3x"
+    }
+}

@@ -4,42 +4,42 @@ export const industryData = [
     {
         id: 1,
         title: "Manufacturing Sector",
-        image: "./assets/industry/industry1.svg",
+        image: "./assets/industry/industry1.webp",
         description: "Industry with high tech machinery needing automations and stuffs like that",
         scale: 1.15
     },
     {
         id: 2,
         title: "FinTech & Finance",
-        image: "./assets/industry/industry2.svg",
+        image: "./assets/industry/industry2.webp",
         description: "Industry with high tech machinery needing automations and stuffs like that",
         scale: 1.1
     },
     {
         id: 3,
         title: "Law & Legislature",
-        image: "./assets/industry/industry3.svg",
+        image: "./assets/industry/industry3.webp",
         description: "Industry with high tech machinery needing automations and stuffs like that",
         scale: 1.2
     },
     {
         id: 4,
         title: "Cloud Infrastructure",
-        image: "./assets/industry/industry4.svg",
+        image: "./assets/industry/industry4.webp",
         description: "Industry with high tech machinery needing automations and stuffs like that",
         scale: 1.25
     },
     {
         id: 5,
         title: "Data centre solutions",
-        image: "./assets/industry/industry5.svg",
+        image: "./assets/industry/industry5.webp",
         description: "Industry with high tech machinery needing automations and stuffs like that",
         scale: 1.25
     },
     {
         id: 6,
         title: "Ecom & Marketplace",
-        image: "./assets/industry/industry6.svg",
+        image: "./assets/industry/industry6.webp",
         description: "Industry with high tech machinery needing automations and stuffs like that",
         scale: 1.15
     }

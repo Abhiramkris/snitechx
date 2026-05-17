@@ -4,37 +4,37 @@ export const servicesData = [
     {
         id: 1,
         title: "Communication & networks",
-        image: "./assets/service/service1.svg",
+        image: "./assets/service/service1.webp",
         description: "Architecting ultra-low latency, high-throughput network topologies designed for mission-critical enterprise compliance."
     },
     {
         id: 2,
         title: "Cloud solutions",
-        image: "./assets/service/service2.svg",
+        image: "./assets/service/service2.webp",
         description: "Deploying resilient, multi-cloud infrastructure with automated scaling, failover redundancy, and optimized cloud economics."
     },
     {
         id: 3,
         title: "Cyber security",
-        image: "./assets/service/service3.svg",
+        image: "./assets/service/service3.webp",
         description: "Implementing zero-trust security architectures and automated threat detection to safeguard enterprise digital assets."
     },
     {
         id: 4,
         title: "It solutions",
-        image: "./assets/service/service4.svg",
+        image: "./assets/service/service4.webp",
         description: "Modernizing legacy IT systems with agile workflows, seamless system integrations, and continuous operational support."
     },
     {
         id: 5,
         title: "Softwares & development",
-        image: "./assets/service/service5.svg",
+        image: "./assets/service/service5.webp",
         description: "Building high-performance, AI-native software applications engineered for rapid scaling and long-term maintainability."
     },
     {
         id: 6,
         title: "Data centre solutions",
-        image: "./assets/service/service6.svg",
+        image: "./assets/service/service6.webp",
         description: "Delivering state-of-the-art data center management, server virtualization, and bulletproof disaster recovery pipelines."
     }
 ];
