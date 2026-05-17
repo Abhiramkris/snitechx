@@ -14,15 +14,15 @@ class NavbarComponent extends HTMLElement {
                     </a>
 
                     <nav class="desktop-nav">
-                        <a href="#home">Home</a>
-                        <a href="#services">Services</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#industries">Industries</a>
+                        <a href="/#home">Home</a>
+                        <a href="/#services">Services</a>
+                        <a href="/#blog">Blog</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="/#industries">Industries</a>
                     </nav>
 
                     <div class="cta-container">
-                        <a href="#connect" class="cta-button">Connect Back</a>
+                        <a href="contact.html" class="cta-button">Connect Back</a>
                         <button class="mobile-toggle" aria-label="Toggle menu">
                             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path class="line-top" d="M4 6H20" stroke="black" stroke-width="2" stroke-linecap="round"/>
@@ -35,12 +35,12 @@ class NavbarComponent extends HTMLElement {
 
                 <div class="mobile-menu">
                     <div class="mobile-nav-links">
-                        <a href="#home">Home</a>
-                        <a href="#services">Services</a>
-                        <a href="#blog">Blog</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#industries">Industries</a>
-                        <a href="#connect" class="mobile-cta">Connect Back</a>
+                        <a href="/#home">Home</a>
+                        <a href="/#services">Services</a>
+                        <a href="/#blog">Blog</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="/#industries">Industries</a>
+                        <a href="contact.html" class="mobile-cta">Connect Back</a>
                     </div>
                 </div>
             </header>

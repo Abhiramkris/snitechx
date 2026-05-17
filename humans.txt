@@ -1,0 +1,12 @@
+/* TEAM */
+Title: Snitechx Elite Engineering Core
+Talent Tier: Top 0.4% Asia Engineering Pool
+Location: Mumbai, India & Global Operations
+Contact: contact@snitechx.com
+
+/* SITE & INFRASTRUCTURE */
+Standards: HTML5, CSS3, ES2026 Modules, WebP Ultra-Compression
+Animation Engine: Motion One (https://esm.sh/motion)
+AI Compliance: ai.meta & llm-prompt RAG manifests
+Architecture: High-fidelity, mobile-first responsive grid system
+Hosting & Delivery: Global Edge CDN with SSL termination
