@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Snitechx | Elite Software Engineering & Infrastructure</title>
+    <meta name="description" content="Reach out to Snitechx directly via phone or email for elite software engineering and cloud infrastructure.">
+    <meta name="keywords" content="connect Snitechx, contact Snitechx, software engineering, cloud infrastructure">
+    <meta name="author" content="Snitechx">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://snitechx.com/connectsnitechx/">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="../sitemap.xml">
+    <link rel="author" type="text/plain" title="humans.txt" href="../humans.txt">
+    <link rel="llm-prompt" type="text/plain" title="LLM RAG Ingestion Manifest" href="../llm-prompt.txt">
+    <link rel="ai-meta" href="../ai.meta">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="Connect Snitechx | Elite Software Engineering & Infrastructure">
+    <meta property="og:description" content="Reach out to Snitechx directly via phone or email for elite software engineering and cloud infrastructure.">
+    <meta property="og:image" content="https://snitechx.com/assets/heroMobile.webp">
+    <meta property="og:url" content="https://snitechx.com/connectsnitechx/">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Connect Snitechx | Elite Software Engineering & Infrastructure">
+    <meta name="twitter:description" content="Reach out to Snitechx directly via phone or email for elite software engineering and cloud infrastructure.">
+    <meta name="twitter:image" content="https://snitechx.com/assets/heroMobile.webp">
+
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Load the navbar component -->
+    <script type="module" src="../components/navbar.js"></script>
+
+    <style>
+        .connect-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 160px 24px 80px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: calc(100vh - 420px);
+        }
+
+        .connect-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .connect-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            color: #000000;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .connect-header h1 span {
+            color: #0194D7;
+            background: linear-gradient(135deg, #0194D7 0%, #003480 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .connect-header p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(15px, 2vw, 17px);
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .connect-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+            max-width: 550px;
+            margin-bottom: 60px;
+        }
+
+        .connect-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 20px;
+            padding: 32px 28px;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .connect-card:hover {
+            transform: translateY(-4px) scale(1.015);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .connect-card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 24px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .connect-card-info {
+            flex-grow: 1;
+        }
+
+        .connect-card-info h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #000000;
+        }
+
+        .connect-card-info p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #666666;
+            margin: 0;
+        }
+
+        .connect-card-action {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 10px;
+            white-space: nowrap;
+            margin-left: 16px;
+            transition: all 0.3s ease;
+        }
+
+        /* Email Card Styling */
+        .card-email {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.06);
+        }
+
+        .card-email .connect-card-icon {
+            background: rgba(1, 148, 215, 0.06);
+            color: #0194D7;
+        }
+
+        .card-email .connect-card-action {
+            background: rgba(1, 148, 215, 0.08);
+            color: #016bac;
+        }
+
+        .card-email:hover {
+            border-color: rgba(1, 148, 215, 0.3);
+        }
+
+        .card-email:hover .connect-card-icon {
+            background: #0194D7;
+            color: #ffffff;
+        }
+
+        .card-email:hover .connect-card-action {
+            background: #0194D7;
+            color: #ffffff;
+        }
+
+        /* Call Card - Highly highlighted to prompt call action */
+        .card-call {
+            background: linear-gradient(135deg, #0194D7 0%, #003480 100%);
+            border: none;
+            color: #ffffff;
+            box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3);
+            animation: pulse-glow 2.5s infinite;
+        }
+
+        .card-call .connect-card-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        .card-call .connect-card-info h2 {
+            color: #ffffff;
+        }
+
+        .card-call .connect-card-info p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .card-call .connect-card-action {
+            background: #ffffff;
+            color: #016bac;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+        }
+
+        .card-call:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(1, 148, 215, 0.45);
+        }
+
+        .card-call:hover .connect-card-icon {
+            background: #ffffff;
+            color: #0194D7;
+        }
+
+        .card-call:hover .connect-card-action {
+            background: #003480;
+            color: #ffffff;
+        }
+
+        /* Call Card Badge */
+        .card-call-badge {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            background: #ffffff;
+            color: #003480;
+            font-family: 'Poppins', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border-radius: 99px;
+            letter-spacing: 0.05em;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3), 0 0 0 0 rgba(1, 148, 215, 0.45);
+            }
+            70% {
+                box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3), 0 0 0 12px rgba(1, 148, 215, 0);
+            }
+            100% {
+                box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3), 0 0 0 0 rgba(1, 148, 215, 0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .connect-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 32px 24px;
+            }
+            .connect-card-icon {
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+            .connect-card-action {
+                margin-left: 0;
+                margin-top: 20px;
+                width: 100%;
+                text-align: center;
+            }
+            .card-call-badge {
+                position: static;
+                margin-bottom: 12px;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- The custom navbar component -->
+    <snitechx-navbar></snitechx-navbar>
+
+    <div class="connect-container">
+        <div class="connect-header">
+            <h1>Connect <span>Snitechx</span></h1>
+            <p>Get in touch with us directly via our Saudi phone line or email addresses for inquiries, support, and sales.</p>
+        </div>
+
+        <div class="connect-stack">
+            <!-- Card 1: Call Directly -->
+            <a href="tel:+966560784555" class="connect-card card-call">
+                <span class="card-call-badge">Preferred</span>
+                <div class="connect-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="connect-card-info">
+                    <h2>Call Us Directly</h2>
+                    <p>+966 560784555</p>
+                </div>
+                <div class="connect-card-action">Click to Call</div>
+            </a>
+
+            <!-- Card 2: Sales Email -->
+            <a href="mailto:sales@snitechx.com" class="connect-card card-email">
+                <div class="connect-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <div class="connect-card-info">
+                    <h2>Sales Inquiries</h2>
+                    <p>sales@snitechx.com</p>
+                </div>
+                <div class="connect-card-action">Send Email</div>
+            </a>
+
+            <!-- Card 3: Personal/Shabeer Email -->
+            <a href="mailto:shabeer@snitechx.com" class="connect-card card-email">
+                <div class="connect-card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <div class="connect-card-info">
+                    <h2>Direct Communication</h2>
+                    <p>shabeer@snitechx.com</p>
+                </div>
+                <div class="connect-card-action">Send Email</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- CTA BANNER & FOOTER SECTION -->
+    <div class="footer-overlap-wrapper">
+        <!-- Overlapping Blue CTA Banner -->
+        <div class="cta-banner-container">
+            <div class="cta-banner-box">
+                <div class="cta-banner-content">
+                    <h2>Ready to transform your digital infrastructure?</h2>
+                    <p>Get our comprehensive service catalog and enterprise case studies.</p>
+                </div>
+                <div class="cta-banner-action">
+                    <button class="brochure-button" onclick="alert('Downloading Brochure...')">Download Brochure</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark Navy Footer -->
+        <footer class="snitechx-footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Column 1: Brand -->
+                    <div class="footer-col brand-col">
+                        <img src="../assets/snitechxLogoWhite.svg" alt="Snitechx Logo" class="footer-logo" />
+                        <p class="footer-desc">Empowering high-compliance industries with elite engineering, AI-native workflows, and bulletproof infrastructure.</p>
+                    </div>
+
+                    <!-- Column 2: Navigation -->
+                    <div class="footer-col links-col">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="/#home">Home</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#industries">Industries</a></li>
+                            <li><a href="/#blog">Blog</a></li>
+                            <li><a href="../contact.html">Connect Back</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Legal & Contact -->
+                    <div class="footer-col legal-col">
+                        <h3>Legal & Contact</h3>
+                        <ul>
+                            <li><a href="/#privacy">Privacy Policy</a></li>
+                            <li><a href="/#terms">Terms of Service</a></li>
+                            <li><a href="../contact.html">Contact Us</a></li>
+                            <li><a href="../sitemap.xml" target="_blank">Sitemap</a></li>
+                        </ul>
+                        <div class="footer-contact-info">
+                            <p class="phone-number">+91 (22) 6665 3366</p>
+                            <p class="email-address">info@snitechx.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Location & Map -->
+                    <div class="footer-col location-col">
+                        <h3>Our Location</h3>
+                        <p class="location-address">King Fahad Ibn Abdulaziz Saud Al Hizam Adh Dhahabi Dist. Al Khobar Saudi Arabia</p>
+                        <div class="map-iframe-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114312.23554884218!2d50.13840785!3d26.28556465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e813521d96b9%3A0x6b47c6691fa01d7e!2sAl%20Khobar%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus" width="100%" height="160" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom Row -->
+                <div class="footer-bottom-row">
+                    <p class="copyright">© 2026 Snitechx. All rights reserved.</p>
+                    <div class="footer-socials">
+                        <a href="#linkedin">LinkedIn</a>
+                        <a href="#twitter">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
