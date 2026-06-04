@@ -139,6 +139,14 @@
 </head>
 
 <body>
+    <!-- Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <img src="./assets/snitechxLogoWhite.svg" alt="Snitechx Logo" class="preloader-logo-img" />
+            <div class="preloader-text">Loading Snitechx...</div>
+        </div>
+    </div>
+
     <!-- The custom navbar component -->
     <snitechx-navbar></snitechx-navbar>
 
@@ -234,10 +242,11 @@
                     <div class="services-blue-content">
                         <h3>High-compliance industries where getting it wrong isn't an option</h3>
                         <div class="services-pills">
-                            <span class="service-pill">Cloud Solutions</span>
-                            <span class="service-pill">Networking</span>
+                            <span class="service-pill">Communication & networks</span>
+                            <span class="service-pill">Cloud solutions</span>
                             <span class="service-pill">Cyber Security</span>
-                            <span class="service-pill">Software Development</span>
+                            <span class="service-pill">IT solutions</span>
+                            <span class="service-pill">Softwares & development</span>
                             <span class="service-pill">Data centre solutions</span>
                         </div>
                     </div>
@@ -398,7 +407,8 @@
             </div>
 
             <!-- View All Blogs Button -->
-            <div class="blog-cta-container" style="display: flex; justify-content: center; width: 100%; margin-top: 48px;">
+            <div class="blog-cta-container"
+                style="display: flex; justify-content: center; width: 100%; margin-top: 48px;">
                 <button id="toggle-blogs-btn" class="industry-cta-button">View All Blogs</button>
             </div>
         </div>
@@ -461,7 +471,8 @@
                     <!-- Column 4: Location & Map -->
                     <div class="footer-col location-col">
                         <h3>Our Location</h3>
-                        <p class="location-address">King Fahad Ibn Abdulaziz Saud Al Hizam Adh Dhahabi Dist. Al Khobar Saudi Arabia</p>
+                        <p class="location-address">King Fahad Ibn Abdulaziz Saud Al Hizam Adh Dhahabi Dist. Al Khobar
+                            Saudi Arabia</p>
                         <div class="map-iframe-wrapper">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114312.23554884218!2d50.13840785!3d26.28556465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e813521d96b9%3A0x6b47c6691fa01d7e!2sAl%20Khobar%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus"
@@ -517,6 +528,15 @@
     <script type="module">
         import { initHeroAnimation } from './components/hero-animation.js';
         initHeroAnimation();
+    </script>
+    <!-- Preloader Script -->
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('preloader');
+            if (loader) {
+                loader.classList.add('fade-out');
+            }
+        });
     </script>
 </body>
 

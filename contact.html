@@ -33,6 +33,14 @@
     <script type="module" src="./components/navbar.js"></script>
 </head>
 <body>
+    <!-- Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <img src="./assets/snitechxLogoWhite.svg" alt="Snitechx Logo" class="preloader-logo-img" />
+            <div class="preloader-text">Loading Snitechx...</div>
+        </div>
+    </div>
+
     <!-- The custom navbar component -->
     <snitechx-navbar></snitechx-navbar>
 
@@ -163,5 +171,14 @@
             </div>
         </footer>
     </div>
+    <!-- Preloader Script -->
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('preloader');
+            if (loader) {
+                loader.classList.add('fade-out');
+            }
+        });
+    </script>
 </body>
 </html>

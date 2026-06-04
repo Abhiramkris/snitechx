@@ -29,8 +29,7 @@
     <meta name="twitter:image" content="https://snitechx.com/assets/heroMobile.webp">
 
     <link rel="stylesheet" href="styles.css">
-    <!-- Load the navbar component -->
-    <script type="module" src="./components/navbar.js"></script>
+    
 
     <style>
         .connect-container {
@@ -59,8 +58,8 @@
         }
 
         .connect-header h1 span {
-            color: #0194D7;
-            background: linear-gradient(135deg, #0194D7 0%, #003480 100%);
+            color: #016bac;
+            background: linear-gradient(135deg, #016bac 0%, #003480 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -156,35 +155,35 @@
         }
 
         .card-email .connect-card-icon {
-            background: rgba(1, 148, 215, 0.06);
-            color: #0194D7;
+            background: rgba(1, 107, 172, 0.06);
+            color: #016bac;
         }
 
         .card-email .connect-card-action {
-            background: rgba(1, 148, 215, 0.08);
+            background: rgba(1, 107, 172, 0.08);
             color: #016bac;
         }
 
         .card-email:hover {
-            border-color: rgba(1, 148, 215, 0.3);
+            border-color: rgba(1, 107, 172, 0.3);
         }
 
         .card-email:hover .connect-card-icon {
-            background: #0194D7;
+            background: #016bac;
             color: #ffffff;
         }
 
         .card-email:hover .connect-card-action {
-            background: #0194D7;
+            background: #016bac;
             color: #ffffff;
         }
 
         /* Call Card - Highly highlighted to prompt call action */
         .card-call {
-            background: linear-gradient(135deg, #0194D7 0%, #003480 100%);
+            background: linear-gradient(135deg, #016bac 0%, #003480 100%);
             border: none;
             color: #ffffff;
-            box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3);
+            box-shadow: 0 12px 35px rgba(1, 107, 172, 0.3);
             animation: pulse-glow 2.5s infinite;
         }
 
@@ -209,12 +208,12 @@
 
         .card-call:hover {
             transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 20px 45px rgba(1, 148, 215, 0.45);
+            box-shadow: 0 20px 45px rgba(1, 107, 172, 0.45);
         }
 
         .card-call:hover .connect-card-icon {
             background: #ffffff;
-            color: #0194D7;
+            color: #016bac;
         }
 
         .card-call:hover .connect-card-action {
@@ -241,13 +240,13 @@
 
         @keyframes pulse-glow {
             0% {
-                box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3), 0 0 0 0 rgba(1, 148, 215, 0.45);
+                box-shadow: 0 12px 35px rgba(1, 107, 172, 0.3), 0 0 0 0 rgba(1, 107, 172, 0.45);
             }
             70% {
-                box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3), 0 0 0 12px rgba(1, 148, 215, 0);
+                box-shadow: 0 12px 35px rgba(1, 107, 172, 0.3), 0 0 0 12px rgba(1, 107, 172, 0);
             }
             100% {
-                box-shadow: 0 12px 35px rgba(1, 148, 215, 0.3), 0 0 0 0 rgba(1, 148, 215, 0);
+                box-shadow: 0 12px 35px rgba(1, 107, 172, 0.3), 0 0 0 0 rgba(1, 107, 172, 0);
             }
         }
 
@@ -277,6 +276,14 @@
     </style>
 </head>
 <body>
+    <!-- Preloader Overlay -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <img src="./assets/snitechxLogoWhite.svg" alt="Snitechx Logo" class="preloader-logo-img" />
+            <div class="preloader-text">Loading Snitechx...</div>
+        </div>
+    </div>
+
     <!-- The custom navbar component -->
     <snitechx-navbar></snitechx-navbar>
 
@@ -407,5 +414,14 @@
             </div>
         </footer>
     </div>
+    <!-- Preloader Script -->
+    <script>
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('preloader');
+            if (loader) {
+                loader.classList.add('fade-out');
+            }
+        });
+    </script>
 </body>
 </html>
