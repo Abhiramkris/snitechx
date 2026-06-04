@@ -418,10 +418,12 @@
     <!-- Preloader Script -->
     <script>
         window.addEventListener('load', () => {
-            const loader = document.getElementById('preloader');
-            if (loader) {
-                loader.classList.add('fade-out');
-            }
+            setTimeout(() => {
+                const loader = document.getElementById('preloader');
+                if (loader) {
+                    loader.classList.add('fade-out');
+                }
+            }, 400);
         });
     </script>
 </body>
