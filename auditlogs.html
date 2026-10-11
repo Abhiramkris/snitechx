@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Logs | Snitechx Infrastructure Dashboard</title>
+    <meta name="description" content="View Snitechx enterprise cloud infrastructure audit logs and threat detection telemetry.">
+    <meta name="keywords" content="audit logs, security logs, zero-trust cloud telemetry, Snitechx dashboard">
+    <meta name="author" content="Snitechx">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://snitechx.com/auditlogs">
+    <link rel="preload" href="/assets/snitechxLogo.svg" as="image" type="image/svg+xml">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="./sitemap.xml">
+    <link rel="author" type="text/plain" title="humans.txt" href="./humans.txt">
+    <link rel="llm-prompt" type="text/plain" title="LLM RAG Ingestion Manifest" href="./llm-prompt.txt">
+    <link rel="ai-meta" href="./ai.meta">
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:title" content="Audit Logs | Snitechx Infrastructure Dashboard">
+    <meta property="og:description" content="View Snitechx enterprise cloud infrastructure audit logs and threat detection telemetry.">
+    <meta property="og:image" content="https://snitechx.com/assets/heroMobile.webp">
+    <meta property="og:url" content="https://snitechx.com/auditlogs">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Audit Logs | Snitechx Infrastructure Dashboard">
+    <meta name="twitter:description" content="View Snitechx enterprise cloud infrastructure audit logs and threat detection telemetry.">
+    <meta name="twitter:image" content="https://snitechx.com/assets/heroMobile.webp">
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load the navbar component -->
+    <script type="module" src="./components/navbar.js"></script>
+
+    <style>
+        .audit-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 160px 24px 80px 24px;
+            min-height: calc(100vh - 420px);
+        }
+
+        .audit-header {
+            margin-bottom: 40px;
+        }
+
+        .audit-header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .audit-header h1 span {
+            color: #016bac;
+            background: linear-gradient(135deg, #016bac 0%, #003480 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .audit-header p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            color: #666666;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        /* Dashboard controls */
+        .audit-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .audit-search-wrapper {
+            position: relative;
+            flex-grow: 1;
+            max-width: 400px;
+        }
+
+        .audit-search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .audit-search-input:focus {
+            border-color: #016bac;
+            box-shadow: 0 0 0 3px rgba(1, 107, 172, 0.1);
+        }
+
+        .audit-search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888888;
+            display: flex;
+            align-items: center;
+        }
+
+        .audit-meta-info {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            color: #666666;
+            font-weight: 500;
+        }
+
+        /* Scrollable Table Styling */
+        .table-wrapper {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            overflow-x: auto;
+            max-height: 550px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Customize scrollbar */
+        .table-wrapper::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.01);
+            border-radius: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: rgba(1, 107, 172, 0.2);
+            border-radius: 8px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: rgba(1, 107, 172, 0.4);
+        }
+
+        .audit-table {
+            width: 100%;
+            min-width: 900px;
+            border-collapse: collapse;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        /* Sticky Header */
+        .audit-table th {
+            position: sticky;
+            top: 0;
+            background: #020E1E;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 18px 20px;
+            z-index: 5;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+        }
+
+        .audit-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            color: #333333;
+            max-width: 250px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        /* Clickable hover effect on cells */
+        .audit-table td:hover {
+            background-color: rgba(1, 107, 172, 0.08);
+            color: #016bac;
+            font-weight: 600;
+        }
+
+        .audit-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .audit-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.01);
+        }
+
+        .audit-table tr:hover {
+            background-color: rgba(1, 107, 172, 0.02);
+        }
+
+        /* Badges for severity */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 99px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .badge-info {
+            background-color: rgba(1, 107, 172, 0.1);
+            color: #016bac;
+        }
+
+        .badge-success {
+            background-color: rgba(46, 117, 89, 0.1);
+            color: #2e7559;
+        }
+
+        .badge-warning {
+            background-color: rgba(224, 153, 36, 0.1);
+            color: #e09924;
+        }
+
+        .badge-critical {
+            background-color: rgba(214, 61, 57, 0.1);
+            color: #d63d39;
+        }
+
+        /* Help tip */
+        .help-tip {
+            margin-top: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            color: #888888;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Premium Modal Dialog */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(2, 14, 30, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background: #ffffff;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            background: #020E1E;
+            color: #ffffff;
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+
+        .modal-close-btn:hover {
+            color: #ffffff;
+        }
+
+        .modal-body {
+            padding: 30px 24px;
+        }
+
+        .modal-label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #888888;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .modal-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #222222;
+            word-break: break-word;
+            white-space: pre-wrap;
+            background: rgba(0, 0, 0, 0.02);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .modal-text.code-format {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            background: #020E1E;
+            color: #8ed3ff;
+            border-color: #020e1e;
+        }
+
+        @media (max-width: 768px) {
+            .audit-container {
+                padding: 120px 16px 60px 16px;
+            }
+            .audit-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .audit-search-wrapper {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- The custom navbar component -->
+    <snitechx-navbar></snitechx-navbar>
+
+    <div class="audit-container">
+        <div class="audit-header">
+            <h1>Telemetry & <span>Audit Logs</span></h1>
+            <p>Real-time enterprise compliance verification, system access records, policy enforcement logs, and security mesh event audits.</p>
+        </div>
+
+        <div class="audit-controls">
+            <div class="audit-search-wrapper">
+                <span class="audit-search-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+                <input type="text" id="audit-search" class="audit-search-input" placeholder="Search events, actors, or metadata...">
+            </div>
+            <div id="row-count" class="audit-meta-info">Loading records...</div>
+        </div>
+
+        <!-- Scrollable Table Wrapper -->
+        <div class="table-wrapper">
+            <table class="audit-table" id="audit-logs-table">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Event ID</th>
+                        <th>Component</th>
+                        <th>Severity</th>
+                        <th>Actor</th>
+                        <th>Action</th>
+                        <th>Metadata</th>
+                    </tr>
+                </thead>
+                <tbody id="audit-table-body">
+                    <!-- Dynamic Rows Injected by JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="help-tip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span>Tip: Click any individual cell in the table to display its complete raw value in a detailed popup.</span>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="detail-modal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3 id="modal-title-field">Event Details</h3>
+                <button id="modal-close" class="modal-close-btn" aria-label="Close modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modal-label-field" class="modal-label">Field Content</div>
+                <pre id="modal-text-field" class="modal-text">Content goes here...</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA BANNER & FOOTER SECTION -->
+    <div class="footer-overlap-wrapper">
+        <!-- Overlapping Blue CTA Banner -->
+        <div class="cta-banner-container">
+            <div class="cta-banner-box">
+                <div class="cta-banner-content">
+                    <h2>Ready to transform your digital infrastructure?</h2>
+                    <p>Get our comprehensive service catalog and enterprise case studies.</p>
+                </div>
+                <div class="cta-banner-action">
+                    <button class="brochure-button" onclick="alert('Downloading Brochure...')">Download Brochure</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dark Navy Footer -->
+        <footer class="snitechx-footer">
+            <div class="footer-container">
+                <div class="footer-grid">
+                    <!-- Column 1: Brand -->
+                    <div class="footer-col brand-col">
+                        <img src="./assets/snitechxLogoWhite.svg" alt="Snitechx Logo" class="footer-logo" />
+                        <p class="footer-desc">Empowering high-compliance industries with elite engineering, AI-native workflows, and bulletproof infrastructure.</p>
+                    </div>
+
+                    <!-- Column 2: Navigation -->
+                    <div class="footer-col links-col">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="/#home">Home</a></li>
+                            <li><a href="/#services">Services</a></li>
+                            <li><a href="/#industries">Industries</a></li>
+                            <li><a href="/#blog">Blog</a></li>
+                            <li><a href="contact.html">Connect Back</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Legal & Contact -->
+                    <div class="footer-col legal-col">
+                        <h3>Legal & Contact</h3>
+                        <ul>
+                            <li><a href="/#privacy">Privacy Policy</a></li>
+                            <li><a href="/#terms">Terms of Service</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="./sitemap.xml" target="_blank">Sitemap</a></li>
+                        </ul>
+                        <div class="footer-contact-info">
+                            <p class="phone-number">+91 (22) 6665 3366</p>
+                            <p class="email-address">info@snitechx.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 4: Location & Map -->
+                    <div class="footer-col location-col">
+                        <h3>Our Location</h3>
+                        <p class="location-address">King Fahad Ibn Abdulaziz Saud Al Hizam Adh Dhahabi Dist. Al Khobar Saudi Arabia</p>
+                        <div class="map-iframe-wrapper">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114312.23554884218!2d50.13840785!3d26.28556465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49e813521d96b9%3A0x6b47c6691fa01d7e!2sAl%20Khobar%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus" width="100%" height="160" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Bottom Row -->
+                <div class="footer-bottom-row">
+                    <p class="copyright">© 2026 Snitechx. All rights reserved.</p>
+                    <div class="footer-socials">
+                        <a href="#linkedin">LinkedIn</a>
+                        <a href="#twitter">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Client-side Logic for Table Rendering, Filtering and Click-to-Modal -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.getElementById('audit-table-body');
+            const searchInput = document.getElementById('audit-search');
+            const modalOverlay = document.getElementById('detail-modal');
+            const modalClose = document.getElementById('modal-close');
+            const modalTitleField = document.getElementById('modal-title-field');
+            const modalLabelField = document.getElementById('modal-label-field');
+            const modalTextField = document.getElementById('modal-text-field');
+            const rowCountField = document.getElementById('row-count');
+
+            // High-fidelity Mock Telemetry & Audit Logs Data
+            const logsData = [
+                { time: "2026-06-05 08:12:45 UTC", event: "EVT-904-AUTH", component: "API Gateway", severity: "Success", actor: "admin@snitechx.com", action: "User Authentication Success", metadata: '{"status":"success","session_id":"sess_8f9a2b","mfa_verified":true,"source_country":"SA"}' },
+                { time: "2026-06-05 08:10:22 UTC", event: "EVT-112-K8S", component: "Kubernetes Controller", severity: "Info", actor: "kubernetes-auto-scaler", action: "Pod Replica Scale Up", metadata: '{"action":"scale_up","target":"auth-service-pod-group","replicas":15,"cpu_utilization":"88%","average_load":1.42}' },
+                { time: "2026-06-05 08:08:15 UTC", event: "EVT-443-SSL", component: "SSL Manager Service", severity: "Success", actor: "letsencrypt-dns-bot", action: "SSL Certificate Auto-Renewal", metadata: '{"domain":"snitechx.com","status":"renewed_success","expiry_date":"2026-09-03T12:00:00Z","cipher_strength":"RSA-4096"}' },
+                { time: "2026-06-05 08:04:12 UTC", event: "EVT-809-IAM", component: "IAM Access Policy Engine", severity: "Warning", actor: "shabeer@snitechx.com", action: "Policy Statement Modification", metadata: '{"policy_id":"pol_7a3d2e_prod_write","changed_permissions":["read","write"],"scope":"production-database-cluster","risk_level":"medium"}' },
+                { time: "2026-06-05 08:01:55 UTC", event: "EVT-220-DB", component: "PostgreSQL Database Cluster", severity: "Critical", actor: "automated-failover-service", action: "Active Replica Failover Triggered", metadata: '{"status":"failed_master_node","active_master":"db-node-02","failed_master":"db-node-01","heartbeat_timeout_ms":3000,"data_integrity_check":"verified"}' },
+                { time: "2026-06-05 07:58:30 UTC", event: "EVT-904-AUTH", component: "API Gateway Firewall", severity: "Critical", actor: "malicious-unknown-ip", action: "Brute Force Attack Detected", metadata: '{"login_attempts":42,"source_ip":"198.51.100.18","target_user":"operator_account","geolocation":"RU","action_taken":"IP_blocked_24h"}' },
+                { time: "2026-06-05 07:52:12 UTC", event: "EVT-301-S3", component: "Backup Storage Service", severity: "Success", actor: "backup-cron-job", action: "Daily PostgreSQL S3 Sync", metadata: '{"bucket_name":"snitechx-production-db-backups","file_size_mb":4812.55,"status":"upload_complete","checksum_sha256":"8e7d23a41b2"}' },
+                { time: "2026-06-05 07:45:00 UTC", event: "EVT-112-K8S", component: "Kubernetes Controller", severity: "Info", actor: "shabeer@snitechx.com", action: "Deploy Rollout Triggered", metadata: '{"image":"snitechx-portal-web:v2.4.1","namespace":"prod-apps","replica_sets_count":3,"status":"rollout_in_progress"}' },
+                { time: "2026-06-05 07:38:19 UTC", event: "EVT-505-WAF", component: "Cloudflare Web Application Firewall", severity: "Success", actor: "cloudflare-waf-mesh", action: "SQLi Threat Packet Blocked", metadata: '{"attacker_ip":"203.0.113.88","uri":"/api/products?id=1%20OR%201=1","rule_matched":"owasp-sqli-rule-942100","http_method":"GET"}' },
+                { time: "2026-06-05 07:30:10 UTC", event: "EVT-809-IAM", component: "IAM Access Policy Engine", severity: "Info", actor: "admin@snitechx.com", action: "Role Assignment Policy Updated", metadata: '{"target_user":"new-developer@snitechx.com","assigned_role":"read-only-developer","assigned_by":"admin@snitechx.com","compliance_reference":"ISO27001-A.9.2"}' }
+            ];
+
+            // Render Table Rows dynamically
+            function renderTable(data) {
+                tableBody.innerHTML = '';
+                data.forEach(log => {
+                    const tr = document.createElement('tr');
+                    
+                    const severityClass = `badge badge-${log.severity.toLowerCase()}`;
+                    
+                    tr.innerHTML = `
+                        <td data-label="Timestamp"></td>
+                        <td data-label="Event ID"></td>
+                        <td data-label="Component"></td>
+                        <td data-label="Severity"><span class="${severityClass}">${log.severity}</span></td>
+                        <td data-label="Actor"></td>
+                        <td data-label="Action"></td>
+                        <td data-label="Metadata"></td>
+                    `;
+                    
+                    // Assign text contents safely
+                    tr.cells[0].textContent = log.time;
+                    tr.cells[1].textContent = log.event;
+                    tr.cells[2].textContent = log.component;
+                    // Severity (index 3) already has markup
+                    tr.cells[4].textContent = log.actor;
+                    tr.cells[5].textContent = log.action;
+                    tr.cells[6].textContent = log.metadata;
+                    
+                    // Assign title tooltips safely
+                    tr.cells[0].title = log.time;
+                    tr.cells[1].title = log.event;
+                    tr.cells[2].title = log.component;
+                    tr.cells[3].title = log.severity;
+                    tr.cells[4].title = log.actor;
+                    tr.cells[5].title = log.action;
+                    tr.cells[6].title = log.metadata;
+                    
+                    // Assign raw values safely
+                    tr.cells[0]._rawValue = log.time;
+                    tr.cells[1]._rawValue = log.event;
+                    tr.cells[2]._rawValue = log.component;
+                    tr.cells[3]._rawValue = log.severity;
+                    tr.cells[4]._rawValue = log.actor;
+                    tr.cells[5]._rawValue = log.action;
+                    tr.cells[6]._rawValue = log.metadata;
+                    
+                    tableBody.appendChild(tr);
+                });
+                rowCountField.textContent = `${data.length} records found`;
+            }
+
+            // Initial render
+            renderTable(logsData);
+
+            // Search filtering logic
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const filtered = logsData.filter(log => 
+                    log.time.toLowerCase().includes(term) ||
+                    log.event.toLowerCase().includes(term) ||
+                    log.component.toLowerCase().includes(term) ||
+                    log.severity.toLowerCase().includes(term) ||
+                    log.actor.toLowerCase().includes(term) ||
+                    log.action.toLowerCase().includes(term) ||
+                    log.metadata.toLowerCase().includes(term)
+                );
+                renderTable(filtered);
+            });
+
+            // Cell click handler for modal
+            tableBody.addEventListener('click', (e) => {
+                const cell = e.target.closest('td');
+                if (!cell) return;
+
+                // Get row metadata
+                const tr = cell.closest('tr');
+                const event = tr.cells[1]._rawValue || tr.cells[1].textContent;
+                
+                // Get cell data label and content
+                const label = cell.getAttribute('data-label');
+                const content = cell._rawValue !== undefined ? cell._rawValue : cell.textContent;
+
+                // Set details in modal fields
+                modalTitleField.textContent = `${event} Log Cell Details`;
+                modalLabelField.textContent = `${label} Data Value:`;
+                
+                // Format if content is JSON object
+                if (content.trim().startsWith('{') || content.trim().startsWith('[')) {
+                    try {
+                        const parsed = JSON.parse(content);
+                        modalTextField.textContent = JSON.stringify(parsed, null, 4);
+                        modalTextField.classList.add('code-format');
+                    } catch (err) {
+                        modalTextField.textContent = content;
+                        modalTextField.classList.remove('code-format');
+                    }
+                } else {
+                    modalTextField.textContent = content;
+                    modalTextField.classList.remove('code-format');
+                }
+
+                // Show and animate Modal
+                modalOverlay.classList.add('active');
+            });
+
+            // Close Modal logic
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+            }
+
+            modalClose.addEventListener('click', closeModal);
+
+            // Close on overlay backdrop click
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Close on escape key down
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
